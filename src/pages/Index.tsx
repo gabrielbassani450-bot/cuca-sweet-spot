@@ -1,7 +1,6 @@
 import logo from "@/assets/logo-rufatto.png";
 import heroPhoto from "@/assets/vo-do-rufatto.jpg";
 import cardapio from "@/assets/cardapio.jpg";
-import cardapioBiscoitos from "@/assets/cardapio-biscoitos.jpg";
 import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 import { Card } from "@/components/ui/card";
 
@@ -100,29 +99,16 @@ const Index = () => {
           </div>
 
           <div className="mt-6 grid gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-7 grid gap-6 sm:grid-cols-2">
-              <Card className="overflow-hidden shadow-soft">
-                <a href={cardapio} target="_blank" rel="noreferrer" className="block">
-                  <img
-                    src={cardapio}
-                    alt="Imagem do cardápio de cucas"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </a>
-              </Card>
-
-              <Card className="overflow-hidden shadow-soft">
-                <a href={cardapioBiscoitos} target="_blank" rel="noreferrer" className="block">
-                  <img
-                    src={cardapioBiscoitos}
-                    alt="Imagem do cardápio de biscoitos"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </a>
-              </Card>
-            </div>
+            <Card className="overflow-hidden lg:col-span-7 shadow-soft">
+              <a href={cardapio} target="_blank" rel="noreferrer" className="block">
+                <img
+                  src={cardapio}
+                  alt="Imagem do cardápio de cucas"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </a>
+            </Card>
 
             <div className="lg:col-span-5">
               <Card className="p-6 shadow-soft">
