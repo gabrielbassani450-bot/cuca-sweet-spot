@@ -57,8 +57,6 @@ const CUCAS: MenuSection = {
       ],
     },
   ],
-  note:
-    "Se quiser, me diga se existe mais algum sabor de cuca no cardápio (parte de baixo da imagem), que eu adiciono aqui.",
 };
 
 const BISCOITOS: MenuSection = {
@@ -95,35 +93,41 @@ const BISCOITOS: MenuSection = {
 
 function MenuBlock({ section }: { section: MenuSection }) {
   return (
-    <Card className="p-5 shadow-soft sm:p-6">
-      <header className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-            {section.title}
-          </h3>
-          {section.subtitle ? (
-            <p className="mt-1 text-sm text-muted-foreground">{section.subtitle}</p>
-          ) : null}
+    <Card className="group relative overflow-hidden border-border/50 bg-card p-6 shadow-soft transition-shadow hover:shadow-lg sm:p-8">
+      {/* Decorative accent */}
+      <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-accent/40 blur-2xl transition-opacity group-hover:opacity-80" />
+      
+      <header className="relative">
+        <div className="flex items-center gap-3">
+          <span className="h-8 w-1 rounded-full bg-primary" />
+          <div>
+            <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              {section.title}
+            </h3>
+            {section.subtitle ? (
+              <p className="mt-0.5 text-sm font-medium text-muted-foreground">{section.subtitle}</p>
+            ) : null}
+          </div>
         </div>
       </header>
 
-      <Separator className="mt-4" />
+      <Separator className="my-6 bg-border/60" />
 
-      <div className="mt-5 space-y-6">
+      <div className="relative space-y-8">
         {section.groups.map((group, idx) => (
-          <section key={group.title} aria-label={group.title} className="space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <section key={group.title} aria-label={group.title} className="space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm font-bold uppercase tracking-widest text-primary">
                 {group.title}
               </p>
               {group.price ? (
-                <span className="inline-flex items-center rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-foreground">
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-sm font-bold text-primary-foreground shadow-sm">
                   {group.price.value}
                 </span>
               ) : null}
             </div>
 
-            <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+            <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
               {group.items.map((item) => {
                 const parts = item.split("—").map((p) => p.trim());
                 const name = parts[0];
@@ -132,29 +136,25 @@ function MenuBlock({ section }: { section: MenuSection }) {
                 return (
                   <li
                     key={item}
-                    className="flex items-start justify-between gap-3 rounded-lg px-2 py-1 text-sm text-muted-foreground"
+                    className="flex items-center justify-between gap-3 rounded-xl bg-secondary/50 px-4 py-2.5 text-sm transition-colors hover:bg-secondary"
                   >
-                    <span className="flex min-w-0 items-start gap-2">
-                      <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground/60" />
-                      <span className="min-w-0">{name}</span>
+                    <span className="flex items-center gap-2.5">
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-brand-2" />
+                      <span className="font-medium text-foreground">{name}</span>
                     </span>
                     {value ? (
-                      <span className="shrink-0 font-semibold text-foreground">{value}</span>
+                      <span className="shrink-0 font-bold text-primary">{value}</span>
                     ) : null}
                   </li>
                 );
               })}
             </ul>
 
-            {idx < section.groups.length - 1 ? <Separator className="pt-1" /> : null}
+            {idx < section.groups.length - 1 ? (
+              <Separator className="!mt-6 bg-border/40" />
+            ) : null}
           </section>
         ))}
-
-        {section.note ? (
-          <p className="rounded-xl bg-secondary px-4 py-3 text-xs text-muted-foreground">
-            {section.note}
-          </p>
-        ) : null}
       </div>
     </Card>
   );
