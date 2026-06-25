@@ -56,6 +56,13 @@ const CUCAS: MenuSection = {
         "Doce de leite com amendoim",
       ],
     },
+    {
+      title: "Sabores especiais (R$ 35,00)",
+      price: { label: "unidade", value: "R$ 35,00" },
+      items: [
+        "Chocolate branco com nozes",
+      ],
+    },
   ],
 };
 
