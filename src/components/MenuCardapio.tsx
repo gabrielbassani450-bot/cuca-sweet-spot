@@ -82,10 +82,9 @@ const BISCOITOS: MenuSection = {
       ],
     },
     {
-      title: "Tamanhos e preços",
+      title: "Tamanho e Preço",
       items: [
-        "350 gramas (básicos) — R$ 15,00",
-        "Em vidros 250 gramas — R$ 17,00",
+        "350 gramas (básicos) — R$ 17,00",
       ],
     },
   ],
