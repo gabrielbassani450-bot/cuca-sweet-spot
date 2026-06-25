@@ -57,7 +57,7 @@ const CUCAS: MenuSection = {
       ],
     },
     {
-      title: "Sabores especiais (R$ 35,00)",
+      title: "Sabor especial",
       price: { label: "unidade", value: "R$ 35,00" },
       items: [
         "Chocolate branco com nozes",
