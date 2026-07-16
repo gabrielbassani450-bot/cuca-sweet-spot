@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
@@ -40,17 +40,20 @@ All colors MUST be HSL.
     --input: 294 25% 86%;
     --ring: 294 42% 36%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     /* extra design tokens */
     --brand: 294 42% 36%;
     --brand-2: 320 68% 60%;
     --cacao: 25 45% 26%;
     --cream: 330 40% 98%;
-    --gradient-hero: radial-gradient(60% 60% at 20% 20%, hsl(var(--brand-2) / 0.25), transparent 60%),
-      radial-gradient(70% 70% at 90% 30%, hsl(var(--brand) / 0.22), transparent 55%),
-      linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-hero: radial-gradient(55% 50% at 15% 15%, hsl(var(--brand-2) / 0.16), transparent 60%),
+      radial-gradient(60% 55% at 90% 20%, hsl(var(--brand) / 0.14), transparent 55%),
+      radial-gradient(70% 60% at 50% 110%, hsl(var(--accent) / 0.5), transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary) / 0.6));
     --shadow-soft: 0 20px 60px -30px hsl(var(--brand) / 0.35);
+    --shadow-lift: 0 10px 40px -12px hsl(var(--brand) / 0.28), 0 2px 8px -2px hsl(var(--brand) / 0.12);
+    --shadow-bar: 0 -8px 40px -12px hsl(var(--brand) / 0.35), 0 12px 32px -8px hsl(var(--brand) / 0.4);
 
     --sidebar-background: 0 0% 98%;
 
@@ -121,13 +124,88 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground antialiased;
   }
 }
 
 @layer utilities {
   .bg-hero {
     background-image: var(--gradient-hero);
+  }
+
+  /* faint confectioner-dot texture */
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--brand) / 0.07) 1px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .mb-safe {
+    margin-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @keyframes bar-in {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .animate-bar-in {
+    animation: bar-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes marquee-x {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee-x 36s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .animate-bar-in,
+    .animate-marquee {
+      animation: none;
+    }
   }
 }

@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Nunito Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["Fraunces", "ui-serif", "Georgia", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -93,6 +97,8 @@ export default {
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
+        lift: "var(--shadow-lift)",
+        bar: "var(--shadow-bar)",
       },
     },
   },
