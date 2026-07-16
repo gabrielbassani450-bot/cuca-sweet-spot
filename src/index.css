@@ -179,19 +179,6 @@ All colors MUST be HSL.
     animation: bar-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  @keyframes marquee-x {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-marquee {
-    animation: marquee-x 36s linear infinite;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -203,8 +190,7 @@ All colors MUST be HSL.
       transition: none;
     }
 
-    .animate-bar-in,
-    .animate-marquee {
+    .animate-bar-in {
       animation: none;
     }
   }

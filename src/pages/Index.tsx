@@ -8,21 +8,6 @@ import { cn } from "@/lib/utils";
 const WHATSAPP_LINK = "https://wa.me/555199987643";
 const WHATSAPP_ORDER_LINK = `${WHATSAPP_LINK}?text=${encodeURIComponent("Olá! Quero fazer um pedido de cuca. Pode me ajudar?")}`;
 
-const MARQUEE_FLAVORS = [
-  "Coco",
-  "Abacaxi",
-  "Doce de leite",
-  "Goiabada",
-  "Chocolate branco com nozes",
-  "Pêssego",
-  "Banana com canela",
-  "Ricota",
-  "Chocolate preto",
-  "Uva",
-  "Frutas cristalizadas",
-  "Doce de leite com amendoim",
-];
-
 function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -189,18 +174,6 @@ const Index = () => {
             </Reveal>
           </div>
         </section>
-
-        {/* ── Flavor marquee ───────────────────────────────── */}
-        <div aria-hidden="true" className="overflow-hidden border-y border-border/50 bg-secondary/40 py-3">
-          <div className="animate-marquee flex w-max items-center gap-6 whitespace-nowrap">
-            {[...MARQUEE_FLAVORS, ...MARQUEE_FLAVORS].map((flavor, i) => (
-              <span key={i} className="flex items-center gap-6 font-serif text-sm italic text-primary/70">
-                {flavor}
-                <span className="h-1 w-1 rounded-full bg-brand-2/60" />
-              </span>
-            ))}
-          </div>
-        </div>
 
         {/* ── Cardápio interativo ──────────────────────────── */}
         <section id="cardapio" className="container scroll-mt-20 py-12 sm:py-16">
