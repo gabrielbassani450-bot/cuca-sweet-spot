@@ -76,7 +76,7 @@ const SECTIONS: MenuSectionData[] = [
   {
     id: "biscoitos",
     label: "Biscoitos",
-    tagline: "Pacote de 350 gramas (básicos)",
+    tagline: "Básicos de 350 g e amanteigados recheados de 230 g",
     groups: [
       {
         id: "biscoito-350",
@@ -97,6 +97,17 @@ const SECTIONS: MenuSectionData[] = [
           "Amendoim",
           "Café",
           "Leite Ninho",
+        ],
+      },
+      {
+        id: "biscoito-amanteigado",
+        title: "Amanteigados recheados",
+        price: 20,
+        priceLabel: "aprox. 230 g",
+        flavors: [
+          "Amanteigado com recheio de chocolate ao leite",
+          "Amanteigado com recheio de cappuccino",
+          "Amanteigado de nozes com recheio de chocolate branco",
         ],
       },
     ],
@@ -121,7 +132,7 @@ function buildWhatsAppLink(cart: Cart): string {
         if (!qty) continue;
         const lineTotal = qty * group.price;
         total += lineTotal;
-        const detail = section.id === "biscoitos" ? `${flavor} (350 g)` : flavor;
+        const detail = section.id === "biscoitos" ? `${flavor} (${group.priceLabel})` : flavor;
         sectionLines.push(`• ${qty}x ${detail} — ${brl.format(lineTotal)}`);
       }
     }
