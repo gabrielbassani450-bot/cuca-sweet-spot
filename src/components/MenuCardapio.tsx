@@ -76,7 +76,7 @@ const SECTIONS: MenuSectionData[] = [
   {
     id: "biscoitos",
     label: "Biscoitos",
-    tagline: "Básicos de 350 g e amanteigados recheados de 230 g",
+    tagline: "Básicos de 350 g, limão e goiabada de 300 g e amanteigados recheados de 300 g",
     groups: [
       {
         id: "biscoito-350",
@@ -93,17 +93,23 @@ const SECTIONS: MenuSectionData[] = [
           "Coco",
           "Cacau",
           "Chocolate",
-          "Limão e goiabada",
           "Amendoim",
           "Café",
           "Leite Ninho",
         ],
       },
       {
+        id: "biscoito-300",
+        title: "Sabor de 300 g",
+        price: 17,
+        priceLabel: "300 g",
+        flavors: ["Limão e goiabada"],
+      },
+      {
         id: "biscoito-amanteigado",
         title: "Amanteigados recheados",
         price: 20,
-        priceLabel: "aprox. 230 g",
+        priceLabel: "aprox. 300 g",
         flavors: [
           "Amanteigado com recheio de chocolate ao leite",
           "Amanteigado com recheio de cappuccino",
